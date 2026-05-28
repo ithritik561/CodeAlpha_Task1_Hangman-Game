@@ -1,0 +1,53 @@
+# Basic Rule-Based Chatbot
+
+def get_response(user_input):
+    text = user_input.lower().strip()
+
+    # Greetings
+    if any(word in text for word in ["hello", "hi", "hey"]):
+        return "Hi! 👋"
+
+    # How are you
+    elif "how are you" in text:
+        return "I'm fine, thanks! 😊"
+
+    # Name
+    elif "name" in text:
+        return "I'm a simple chatbot."
+
+    # Help
+    elif "help" in text:
+        return "You can say things like: hello, how are you, your name, bye."
+
+    # Exit
+    elif text in ["bye", "exit", "quit"]:
+        return "Goodbye! 👋"
+
+    # Default
+    else:
+        return "Sorry, I don't understand that."
+
+def run_chatbot():
+    print("🤖 Chatbot is running! (type 'bye' to exit)")
+
+    while True:
+        user_input = input("\nYou: ")
+
+        # Handle empty input
+        if not user_input.strip():
+            print("Bot: Please type something.")
+            continue
+
+        response = get_response(user_input)
+        print("Bot:", response)
+
+        # Exit condition
+        if user_input.lower().strip() in ["bye", "exit", "quit"]:
+            break
+
+def main():
+    run_chatbot()
+    print("👋 Chat ended.")
+
+if __name__ == "__main__":
+    main()
